@@ -1,6 +1,6 @@
 -- Create database
 
-CREATE DATABASE postgres;
+-- CREATE DATABASE postgres;
 
 
 --Create account table 
@@ -19,8 +19,7 @@ CREATE TABLE accounts(
 -- Insert account statement
 
 INSERT INTO accounts (
- account_name, account_type, currency) VALUES ('SGSavings', 'Savings', 'SGD')
- returning account_number;
+ account_name, account_type, currency) VALUES ('SGSavings', 'Savings', 'SGD');
 
  INSERT INTO accounts (
 account_name, account_type, currency) VALUES 
