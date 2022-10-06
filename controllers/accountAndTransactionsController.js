@@ -17,7 +17,7 @@ module.exports ={
                 })
                 res.status(200).json({success:true, account: data}
                     )})
-            .catch(err=>res.status(400).json({err}))
+            .catch(err=>res.status(400).json({err: err.message}))
 
 
     },
