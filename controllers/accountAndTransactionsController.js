@@ -11,6 +11,7 @@ module.exports ={
 
         Accounts.get()
             .then(data=>{
+                data=data.rows
                 data=data.map(obj=>{
                     return {...obj,
                     balanceDate: today}
@@ -28,6 +29,7 @@ module.exports ={
         let accountNr=req.params.accountNr
         Transactions.get(accountNr)
          .then(data=>{
+            data=data.rows
             res.status(200).json({success:true, transactions:data})
          })
          .catch(err=>res.status(400).json({err}))
