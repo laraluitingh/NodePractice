@@ -26,7 +26,7 @@ if(debitOrCredit==="Credit"){
 
 if(debitOrCredit==="Debit"){
 
-    return db.none(`UPDATE accounts SET opening_balance=opening_balance-$1 WHERE account_nr = $2`, [
+    return db.query(`UPDATE accounts SET opening_balance=opening_balance-$1 WHERE account_nr = $2`, [
         balance,
         accountnr
       ]);

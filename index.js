@@ -2,7 +2,9 @@ const express = require('express');
 const app = express();
 require('dotenv').config(); 
 const bodyParser = require("body-parser");
-const accountAndTransactions=require('./routes/accountsAndTrandactionRoutes')
+const accountRoutes=require('./routes/account')
+const transactionRoutes=require('./routes/transactions')
+
 
 
 
@@ -18,7 +20,8 @@ app.all('/*', (req, res, next) => {
   next();
 })
 
-app.use('/api', accountAndTransactions)
+app.use('/api/accounts',accountRoutes)
+app.use('/api/transactions',transactionRoutes)
 
 app.get('/', (req, res) => {
   res.send('Hello World!');
@@ -30,4 +33,4 @@ app.use((err, req, res, next) => {
 });
 
 
-app.listen(process.env.PORT || 3000);
+app.listen(process.env.PORT || 3001);
