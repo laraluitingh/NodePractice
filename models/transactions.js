@@ -12,7 +12,7 @@ Transactions.create = (amount, debitOrCredit, transactionNarrative, accountNumbe
 
 // GET ALL transactions
 Transactions.get = (accountNR) => {
-  return db.query(`SELECT transactions.amount, transactions.debit_credit, transactions.transaction_date, transactions.transaction_narrative,`+
+  return db.query(`SELECT transactions.amount, transactions.debit_credit, transactions.transaction_date, transactions.transaction_narrative, transactions.transaction_id, `+
     `accounts.account_nr, accounts.account_name, accounts.currency FROM transactions INNER JOIN accounts ON accounts.account_nr=transactions.account_number_id where account_nr=${accountNR}`);
 };
 
