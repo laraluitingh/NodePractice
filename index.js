@@ -23,10 +23,6 @@ app.all('/*', (req, res, next) => {
 app.use('/api/accounts',accountRoutes)
 app.use('/api/transactions',transactionRoutes)
 
-app.get('/', (req, res) => {
-  res.send('Hello World!');
-});
-
 app.use((err, req, res, next) => {
   console.log(err);
   res.status(err.status || 500).send(err.stack);
