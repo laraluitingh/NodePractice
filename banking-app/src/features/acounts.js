@@ -9,7 +9,7 @@ function Accounts() {
         fetch('/api/accounts')
         .then(res => res.json())
         .then(res => {setAccounts(res.account); console.log(res);})
-        .catch(err => console.log(err));
+        .catch(err => console.log(err.message));
       }, [])
 
     

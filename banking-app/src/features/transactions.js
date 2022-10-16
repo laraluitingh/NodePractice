@@ -36,7 +36,7 @@ function Transactions(props) {
           setTransactions(transactions);
         }
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.log(err.message));
   }, [id]);
 
   return (
