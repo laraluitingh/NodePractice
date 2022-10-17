@@ -1,30 +1,25 @@
-import {Link, useNavigate} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 import './account.css'
-import API from '../apis/accountsAndTransaction'
+import { useDispatch} from "react-redux";
+import { getAccounts } from '../store/accountSlice';
+
 function Accounts() {
     const [accounts, setAccounts] = useState([]);
+    const dispatch = useDispatch();
+
     let href;
 
-    const getAccounts = async()=>{
-
-        try{
-            const response=await API.get('/accounts')
-            console.log(response)
-            // const json=response.json()
-            setAccounts(response.data.account)
-        }catch(err){
-            console.log(err.message)
-
-        }
-    }
-
     useEffect(() => {
-        getAccounts()
-        // fetch('/api/accounts')
-        // .then(res => res.json())
-        // .then(res => {setAccounts(res.account); console.log(res);})
-        // .catch(err => console.log(err.message));
+
+        dispatch(getAccounts())
+    .unwrap()
+    .then((res) => {
+     setAccounts(res.account)
+    })
+    .catch((err) => {
+      console.log(err.message)
+    })
       }, [])
 
     
