@@ -1,16 +1,19 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import API from '../apis/accountsAndTransaction'
 function Transactions(props) {
   const [transactions, setTransactions] = useState([]);
   const { id } = useParams();
   const [noTransactions, setNoTransaction] = useState(true);
 
-  useEffect(() => {
-    console.log(id);
-    fetch(`/api/transactions/${id}`)
-      .then((res) => res.json())
-      .then((res) => {
-        let transactions = res.transactions;
+
+  
+  const getAllTransactions = async()=>{
+
+    try{
+        const res=await API.get(`/transactions/${id}`)
+        console.log(res)
+        let transactions = res.data.transactions;
         if (transactions.length === 0) {
         } else {
           setNoTransaction(false);
@@ -35,8 +38,15 @@ function Transactions(props) {
           });
           setTransactions(transactions);
         }
-      })
-      .catch((err) => console.log(err.message));
+        
+    }catch(err){
+        console.log(err.message)
+
+    }
+}
+
+  useEffect(() => {
+  getAllTransactions()
   }, [id]);
 
   return (
