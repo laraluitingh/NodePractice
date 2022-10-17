@@ -1,4 +1,4 @@
-const AccountsController=require('../controllers/accountAndTransactionsController')
+const AccountsController=require('../controllers/account')
 var router = require('express').Router();
 
 router.get('/', AccountsController.getAccounts);
